@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.point.CreateActivity" >
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="5"
+        android:hint="@string/title"
+        android:textSize="@dimen/abc_dropdownitem_text_padding_left" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:ems="5"
+        android:hint="@string/activity"
+        android:textSize="@dimen/abc_dropdownitem_text_padding_left" />
+
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:weightSum="2">
+    
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:ems="5"
+            android:hint="@string/start_time"
+            android:inputType="time"
+            android:textSize="@dimen/abc_dropdownitem_text_padding_left" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:ems="5"
+            android:hint="@string/end_time"
+            android:inputType="time"
+            android:textSize="@dimen/abc_dropdownitem_text_padding_left" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/lin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lin1"
+        android:weightSum="3">
+    
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cancelpresschange" android:contentDescription="@string/cancelbutton"/>
+        
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:ems="5"
+            android:hint="@string/zipcode"
+            android:inputType="number"
+            android:textSize="@dimen/abc_dropdownitem_text_padding_left" />
+    
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/createactivitypresschange" android:contentDescription="@string/createactivity"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>

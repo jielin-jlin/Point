@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageButton1"
+        android:background="@drawable/signinpresschange"
+        android:contentDescription="@string/login"/>
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/signup"
+        android:background="@drawable/signuppresschange" 
+        />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/pointlogowhole" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/email_username"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_below="@+id/editText2"
+        android:ems="10"
+        android:hint="@string/passphrase"
+        android:inputType="textPassword" >
+    </EditText>
+
+</RelativeLayout>

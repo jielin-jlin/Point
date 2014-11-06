@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.point.Infofragment" >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <QuickContactBadge
+        android:id="@+id/quickContactBadge1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/quickContactBadge1"
+        android:text="@string/first_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_toRightOf="@+id/quickContactBadge1"
+        android:text="@string/last_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/quickContactBadge1"
+        android:text="@string/activities_participated_"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="15sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView4"
+        android:max="5"
+        android:numStars="5"
+        android:rating="0.0"
+        android:stepSize="0.0"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/comments"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+
+</RelativeLayout>
