@@ -67,5 +67,7 @@
     <string name="aaa">aaa</string>
     <string name="something">something</string>
     <string name="profile_picture">Profile Picture</string>
+    <string name="date">Date</string>
+    <string name="first_name_last_name">first name last name</string>
 
 </resources>

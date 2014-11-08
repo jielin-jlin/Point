@@ -32,8 +32,8 @@ import android.widget.ImageButton;
 public class CreateActivity extends ActionBarActivity {
 
 	ImageButton cancel,create_activity;
-	EditText title,activity,starttime,endtime,location,zipcode;
-	String _title,_activity,_starttime,_endtime,_location,_zipcode,reply, first_name,last_name,email;
+	EditText title,activity,starttime,endtime,location,zipcode, date;
+	String _title,_activity,_date,_starttime,_endtime,_location,_zipcode,reply, first_name,last_name,email;
 	ProgressDialog pDialog;
 	AlertDialog.Builder alert;
 	HttpClient httpclient;
@@ -49,6 +49,7 @@ public class CreateActivity extends ActionBarActivity {
 		create_activity=(ImageButton)findViewById(R.id.imageButton1);
 		title=(EditText)findViewById(R.id.editText1);
 		activity=(EditText)findViewById(R.id.editText2);
+		date=(EditText)findViewById(R.id.editText7);
 		starttime=(EditText)findViewById(R.id.editText3);
 		endtime=(EditText)findViewById(R.id.editText4);
 		location=(EditText)findViewById(R.id.editText6);
@@ -73,12 +74,13 @@ public class CreateActivity extends ActionBarActivity {
 					//get input to string
 					_title=title.getText().toString().trim();
 					_activity=activity.getText().toString().trim();
+					_date = date.getText().toString().trim();
 					_starttime=starttime.getText().toString().trim();
 					_endtime=endtime.getText().toString().trim();
 					_location=location.getText().toString().trim();
 					_zipcode=zipcode.getText().toString().trim();
 					if((_title.length()==0)||(_activity.length()==0)||
-							(_starttime.length()==0)||(_endtime.length()==0)
+							(_date.length()==0)||(_starttime.length()==0)||(_endtime.length()==0)
 							||(_location.length()==0)||(_zipcode.length()==0))
 					{
 						alert = new AlertDialog.Builder(CreateActivity.this);
@@ -168,6 +170,7 @@ public class CreateActivity extends ActionBarActivity {
 			List<NameValuePair> list=new ArrayList<NameValuePair>();
 			list.add(new BasicNameValuePair("title",_title));
 			list.add(new BasicNameValuePair("activity",_activity));
+			list.add(new BasicNameValuePair("date",_date));
 			list.add(new BasicNameValuePair("starttime",_starttime));
 			list.add(new BasicNameValuePair("endtime",_endtime));
 			list.add(new BasicNameValuePair("location",_location));

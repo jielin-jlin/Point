@@ -29,12 +29,40 @@
         android:ems="10"
         android:hint="@string/activity" />
 
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/createactivitypresschange"
+        android:contentDescription="@string/createactivity" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/cancelpresschange"
+        android:contentDescription="@string/cancelbutton" />
+
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText2"
         android:layout_below="@+id/editText2"
+        android:ems="10"
+        android:hint="@string/date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText7"
+        android:layout_below="@+id/editText7"
         android:ems="10"
         android:hint="@string/start_time"
         android:inputType="time" />
@@ -43,43 +71,26 @@
         android:id="@+id/editText4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignLeft="@+id/editText7"
         android:layout_below="@+id/editText3"
         android:ems="10"
         android:hint="@string/end_time"
         android:inputType="time" />
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/createactivitypresschange" android:contentDescription="@string/createactivity"/>
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/cancelpresschange" android:contentDescription="@string/cancelbutton"/>
-
     <EditText
         android:id="@+id/editText6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText7"
         android:layout_below="@+id/editText4"
-        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/location"
-        android:inputType="" />
+        android:hint="@string/location" />
 
     <EditText
         android:id="@+id/editText5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignLeft="@+id/editText7"
         android:layout_below="@+id/editText6"
         android:ems="10"
         android:hint="@string/zipcode"

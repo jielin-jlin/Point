@@ -51,7 +51,8 @@ public class Ongoingfragment extends Fragment {
 	ImageButton createactivity;
 	String reply;
 	InputStream inputStream;
-	String result,activityid;
+	String result;
+	public static String activityid;
 	JSONObject jObject;
 	ProgressDialog pDialog;
 	AlertDialog.Builder alert;
@@ -238,11 +239,8 @@ public class Ongoingfragment extends Fragment {
 		@TargetApi(Build.VERSION_CODES.KITKAT)
 		@Override
 		protected String doInBackground(String... params) {
-			List<NameValuePair> list=new ArrayList<NameValuePair>();
-			list.add(new BasicNameValuePair("query","SELECT * FROM activity WHERE 1"));
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost("http://www.point.web44.net/getactivity.php");
-			post.setHeader("Content-type", "application/json");
 			
 			try {
 				HttpResponse response = client.execute(post);

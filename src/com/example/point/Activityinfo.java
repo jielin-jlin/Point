@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,32 +13,83 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import com.example.point.activitylistadapter.MyViewHolder;
+
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class Activityinfo extends ActionBarActivity {
 
-	TextView title,activity, timestart,timeend,location,zipcode;
+	TextView title,activity,date, timestart,timeend,location,zipcode;
 	ImageButton participate;
 	ProgressDialog pDialog;
 	AlertDialog.Builder alert;
 	InputStream inputStream;
-	String result;
+	String result,email;
+	ListView listv;
+	ArrayList<ArrayList<String>> arraylist;
+	ArrayList<String> participantarray;
+	participantlistadapter adapter;
+	Usersession session;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activityinfo);
+		title =(TextView)findViewById(R.id.textView1);
+		activity=(TextView)findViewById(R.id.textView2);
+		date=(TextView)findViewById(R.id.textView8);
+		timestart=(TextView)findViewById(R.id.textView3);
+		timeend=(TextView)findViewById(R.id.textView6);
+		location=(TextView)findViewById(R.id.textView7);
+		zipcode=(TextView)findViewById(R.id.textView4);
+		
+		participate=(ImageButton)findViewById(R.id.imageButton1);
+		
+		listv = (ListView)findViewById(R.id.listView1);
+		
+		arraylist = new ArrayList<ArrayList<String>>();
+		participantarray = new ArrayList<String>();
+		
+		participate.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(v==participate)
+				{
+					email =session.getinfo("email");
+					new participant().execute();
+				}
+				
+			}
+		});
+		
+		new getinfo().execute();
 		
 	}
 
@@ -73,10 +125,16 @@ public class Activityinfo extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... params) {
 			List<NameValuePair> list=new ArrayList<NameValuePair>();
-			list.add(new BasicNameValuePair("query","SELECT * FROM activity WHERE 1"));
+			list.add(new BasicNameValuePair("id",Ongoingfragment.activityid.toString().trim()));
 			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://www.point.web44.net/getactivity.php");
-			post.setHeader("Content-type", "application/json");
+			HttpPost post = new HttpPost("http://www.point.web44.net/activityinfo.php");
+			try {
+				post.setEntity(new UrlEncodedFormEntity(list));
+				
+			} catch (UnsupportedEncodingException e) {
+				
+				e.printStackTrace();
+			}
 			try {
 				HttpResponse response = client.execute(post);
 				HttpEntity entity = response.getEntity();
@@ -103,9 +161,161 @@ public class Activityinfo extends ActionBarActivity {
 			}
 			return null;
 		}
+		@TargetApi(Build.VERSION_CODES.KITKAT)
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(String file_url) {
+			try {
+				JSONArray jarray = new JSONArray(result);
+				convertresult(jarray);
+				
+			} catch (JSONException e) {
+				alert = new AlertDialog.Builder(Activityinfo.this);
+				alert.setTitle("ERROR");
+				alert.setMessage(e.toString());
+				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//kill activity
+					}
+				}).show();
+				e.printStackTrace();
+			}
 			pDialog.dismiss();
 		}
 	}
+	public void convertresult(JSONArray jarray)
+	{
+		if(jarray.length()!=0)
+		{
+			int i,j,k;
+			for(i=0;i<jarray.length();i++)
+			{
+				ArrayList<String> array=new ArrayList<String>();
+				JSONArray jjarray=new JSONArray();
+				try {
+					jjarray = jarray.getJSONArray(i);
+				} catch (JSONException e) {
+					alert = new AlertDialog.Builder(Activityinfo.this);
+					alert.setTitle("ERROR");
+					alert.setMessage(e.toString());
+					alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							//kill activity
+						}
+					}).show();
+				}
+					for(j=0;j<jjarray.length();j++)
+					{
+						try {
+							array.add(jjarray.getString(j).toString());
+						} catch (JSONException e) {
+							alert = new AlertDialog.Builder(Activityinfo.this);
+							alert.setTitle("ERROR");
+							alert.setMessage(e.toString());
+							alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									//kill activity
+								}
+							}).show();
+							e.printStackTrace();
+						}
+					}
+					arraylist.add(array);
+			}
+			title.setText("Title:"+arraylist.get(0).get(4).toString().trim());
+			activity.setText("Activity: "+arraylist.get(0).get(5).toString().trim());
+			date.setText("Date:"+arraylist.get(0).get(6).toString().trim());
+			timestart.setText("Begin:"+arraylist.get(0).get(7).toString().trim());
+			timeend.setText("End:"+arraylist.get(0).get(8).toString().trim());
+			location.setText("Location:"+arraylist.get(0).get(9).toString().trim());
+			zipcode.setText("Zipcode:"+arraylist.get(0).get(10).toString().trim());
+			for(k=1;k<arraylist.get(1).size();k++)
+			{
+				participantarray.add(arraylist.get(1).get(k));
+			}
+			adapter = new participantlistadapter(Activityinfo.this,participantarray);
+			listv.setAdapter(adapter);
+		
+		}
+		else
+		{
+			alert = new AlertDialog.Builder(Activityinfo.this);
+			alert.setTitle("ERROR");
+			alert.setMessage("Activity Loading Error");
+			alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					//kill activity
+				}
+			}).show();
+		}
+	}
+	class participant extends AsyncTask<String,String,String>
+	{
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Activityinfo.this);
+			pDialog.setMessage("Loading...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		protected void onPostExecute(String _result) {
+			pDialog.dismiss();
+		}
+	}
+}
+class participantlistadapter extends ArrayAdapter<String>
+{
+	Context context;
+	ArrayList<String> parray;
+	participantlistadapter(Context c,ArrayList<String> _parray)
+	{
+		super(c,R.layout.activityinfosinglerow,R.id.textView1,_parray);
+		this.context=c;
+		this.parray=_parray;
+	}
+	class MyViewHolder
+	{
+		TextView name;
+		MyViewHolder(View v)
+		{
+			name = (TextView)v.findViewById(R.id.textView1);
+		}
+	}
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
+		View row = convertView;
+		MyViewHolder holder = null;
+		if(row==null)
+		{
+				LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				row=inflater.inflate(R.layout.activityinfosinglerow,parent,false);
+				holder = new MyViewHolder(row);
+				row.setTag(holder);
+		}
+		else
+		{
+			holder = (MyViewHolder)row.getTag();
+		}
+		holder.name.setText(parray.get(position));
+		return row;
+		
+	}
+	
 }
