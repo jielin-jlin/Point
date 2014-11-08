@@ -71,5 +71,8 @@
     <string name="first_name_last_name">first name last name</string>
     <string name="title_activity_participate">Participate</string>
     <string name="title_activity_chatpage">Chatpage</string>
+    <string name="say_something">Say something</string>
+    <string name="send">send</string>
+    <string name="_say_something">- Say Something</string>
 
 </resources>

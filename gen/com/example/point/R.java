@@ -1108,15 +1108,18 @@ containing a value of this type.
         public static final int pointicon=0x7f020073;
         public static final int pointlogo=0x7f020074;
         public static final int pointlogowhole=0x7f020075;
-        public static final int signinbutton=0x7f020076;
-        public static final int signinbuttonpressed=0x7f020077;
-        public static final int signinpresschange=0x7f020078;
-        public static final int signupbutton=0x7f020079;
-        public static final int signupbuttonpressed=0x7f02007a;
-        public static final int signuppresschange=0x7f02007b;
-        public static final int uploadimagebutton=0x7f02007c;
-        public static final int uploadimagebuttonpressed=0x7f02007d;
-        public static final int uploadimagepresschange=0x7f02007e;
+        public static final int sendbutton=0x7f020076;
+        public static final int sendbuttonchange=0x7f020077;
+        public static final int sendbuttonpressed=0x7f020078;
+        public static final int signinbutton=0x7f020079;
+        public static final int signinbuttonpressed=0x7f02007a;
+        public static final int signinpresschange=0x7f02007b;
+        public static final int signupbutton=0x7f02007c;
+        public static final int signupbuttonpressed=0x7f02007d;
+        public static final int signuppresschange=0x7f02007e;
+        public static final int uploadimagebutton=0x7f02007f;
+        public static final int uploadimagebuttonpressed=0x7f020080;
+        public static final int uploadimagepresschange=0x7f020081;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1143,12 +1146,12 @@ containing a value of this type.
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
         public static final int editText1=0x7f05004b;
-        public static final int editText2=0x7f05004c;
-        public static final int editText3=0x7f050050;
-        public static final int editText4=0x7f050051;
-        public static final int editText5=0x7f05004e;
-        public static final int editText6=0x7f050052;
-        public static final int editText7=0x7f05004f;
+        public static final int editText2=0x7f05004d;
+        public static final int editText3=0x7f050051;
+        public static final int editText4=0x7f050052;
+        public static final int editText5=0x7f05004f;
+        public static final int editText6=0x7f050053;
+        public static final int editText7=0x7f050050;
         public static final int editText8=0x7f050058;
         public static final int edit_query=0x7f050030;
         public static final int end=0x7f050013;
@@ -1160,9 +1163,9 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
         public static final int imageButton1=0x7f05003e;
-        public static final int imageButton2=0x7f05004d;
+        public static final int imageButton2=0x7f05004e;
         public static final int imageButton3=0x7f050059;
-        public static final int imageView1=0x7f050054;
+        public static final int imageView1=0x7f050055;
         public static final int lin1=0x7f050046;
         public static final int lin2=0x7f050047;
         public static final int lin3=0x7f050048;
@@ -1174,15 +1177,15 @@ containing a value of this type.
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int pager=0x7f050053;
+        public static final int pager=0x7f050054;
         public static final int profile=0x7f05005d;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
-        public static final int quickContactBadge1=0x7f050055;
+        public static final int quickContactBadge1=0x7f050056;
         public static final int radio=0x7f05002f;
-        public static final int ratingBar1=0x7f050056;
+        public static final int ratingBar1=0x7f050057;
         public static final int refresh=0x7f05005b;
-        public static final int scrollView1=0x7f050057;
+        public static final int scrollView1=0x7f05004c;
         public static final int search=0x7f05005c;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1298,6 +1301,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int _of_participants=0x7f0a0047;
+        public static final int _say_something=0x7f0a0055;
         public static final int aaa=0x7f0a004c;
         public static final int abc=0x7f0a0049;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1378,7 +1382,9 @@ containing a value of this type.
         public static final int profile_picture=0x7f0a004e;
         public static final int profile_picture_=0x7f0a004a;
         public static final int refresh=0x7f0a0026;
+        public static final int say_something=0x7f0a0053;
         public static final int search=0x7f0a0027;
+        public static final int send=0x7f0a0054;
         public static final int sign_up=0x7f0a0022;
         public static final int signup=0x7f0a0015;
         public static final int signupbutton=0x7f0a001f;

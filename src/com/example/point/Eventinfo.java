@@ -25,11 +25,13 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -54,6 +56,15 @@ public class Eventinfo extends ActionBarActivity {
 		location=(TextView)findViewById(R.id.textView5);
 		zipcode=(TextView)findViewById(R.id.textView6);
 		chat=(ImageButton)findViewById(R.id.imageButton1);
+		chat.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent newchat = new Intent(Eventinfo.this,Chatpage.class);
+				startActivity(newchat);
+				
+			}
+		});
 		new geteventinfo().execute();
 		
 	}
