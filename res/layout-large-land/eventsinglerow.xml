@@ -5,11 +5,12 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/pointicon" android:contentDescription="@string/icon"/>
+        android:contentDescription="@string/icon"
+        android:src="@drawable/pointicon" />
 
     <TextView
         android:id="@+id/textView1"
@@ -17,9 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageView1"
+        android:singleLine="true"
         android:text="@string/id"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:singleLine="true" />
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -27,9 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_toRightOf="@+id/imageView1"
+        android:singleLine="true"
         android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:singleLine="true" />
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -37,8 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageView1"
+        android:singleLine="true"
         android:text="@string/activity_description"
-        android:textAppearance="?android:attr/textAppearanceSmall" 
-        android:singleLine="true"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="35sp" />
 
 </RelativeLayout>

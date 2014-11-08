@@ -12,6 +12,6 @@
         android:singleLine="true"
         android:text="@string/first_name_last_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="80sp" />
 
 </RelativeLayout>
