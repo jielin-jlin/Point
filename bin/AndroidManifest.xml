@@ -60,6 +60,10 @@
             android:name=".Eventinfo"
             android:label="@string/title_activity_eventinfo" >
         </activity>
+        <activity
+            android:name=".Participate"
+            android:label="@string/title_activity_participate" >
+        </activity>
     </application>
 
 </manifest>

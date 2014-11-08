@@ -1289,8 +1289,9 @@ containing a value of this type.
         public static final int eventpage=0x7f0c0004;
         public static final int login=0x7f0c0005;
         public static final int main=0x7f0c0006;
-        public static final int profile=0x7f0c0007;
-        public static final int sign_up=0x7f0c0008;
+        public static final int participate=0x7f0c0007;
+        public static final int profile=0x7f0c0008;
+        public static final int sign_up=0x7f0c0009;
     }
     public static final class string {
         public static final int _of_participants=0x7f0a0047;
@@ -1392,6 +1393,7 @@ containing a value of this type.
         public static final int title_activity_eventinfo=0x7f0a0041;
         public static final int title_activity_eventpage=0x7f0a002a;
         public static final int title_activity_login=0x7f0a0023;
+        public static final int title_activity_participate=0x7f0a0051;
         public static final int title_activity_profile=0x7f0a0030;
         public static final int title_activity_sign_up=0x7f0a0020;
         public static final int todo=0x7f0a004b;

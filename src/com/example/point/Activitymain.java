@@ -28,6 +28,7 @@ import android.app.ProgressDialog;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -175,28 +176,44 @@ public class Activitymain extends ActionBarActivity implements TabListener{
 		}
 		@Override
 		protected String doInBackground(String... params) {
-			List<NameValuePair> list=new ArrayList<NameValuePair>();
-			list.add(new BasicNameValuePair("email",session.getinfo("email")));
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://www.point.web44.net/logout.php");
-			try {
-				post.setEntity(new UrlEncodedFormEntity(list));
-				
-			} catch (UnsupportedEncodingException e) {
-				
-				e.printStackTrace();
+			try
+			{
+				List<NameValuePair> list=new ArrayList<NameValuePair>();
+				list.add(new BasicNameValuePair("email",session.getinfo("email")));
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost("http://www.point.web44.net/logout.php");
+				try {
+					post.setEntity(new UrlEncodedFormEntity(list));
+					
+				} catch (UnsupportedEncodingException e) {
+					
+					e.printStackTrace();
+				}
+				try {
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+					reply = EntityUtils.toString(entity).trim();
+					
+				} catch (ClientProtocolException e) {
+					
+					e.printStackTrace();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
 			}
-			try {
-				HttpResponse response = client.execute(post);
-				HttpEntity entity = response.getEntity();
-				reply = EntityUtils.toString(entity).trim();
-				
-			} catch (ClientProtocolException e) {
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+			catch(Exception e)
+			{
+				alert = new AlertDialog.Builder(Activitymain.this);
+				alert.setTitle("SORRY");
+				alert.setMessage("Either you have no internet connect at the moment or your ISP provider has blocked us, please contact your ISP provider");
+				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//kill activity
+					}
+				}).show();
 			}
 			return null;
 		}

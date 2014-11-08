@@ -416,8 +416,9 @@ int menu eventinfo 0x7f0c0003
 int menu eventpage 0x7f0c0004
 int menu login 0x7f0c0005
 int menu main 0x7f0c0006
-int menu profile 0x7f0c0007
-int menu sign_up 0x7f0c0008
+int menu participate 0x7f0c0007
+int menu profile 0x7f0c0008
+int menu sign_up 0x7f0c0009
 int string _of_participants 0x7f0a0047
 int string aaa 0x7f0a004c
 int string abc 0x7f0a0049
@@ -490,6 +491,7 @@ int string title_activity_create 0x7f0a0035
 int string title_activity_eventinfo 0x7f0a0041
 int string title_activity_eventpage 0x7f0a002a
 int string title_activity_login 0x7f0a0023
+int string title_activity_participate 0x7f0a0051
 int string title_activity_profile 0x7f0a0030
 int string title_activity_sign_up 0x7f0a0020
 int string todo 0x7f0a004b

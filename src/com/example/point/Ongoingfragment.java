@@ -5,16 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -239,32 +235,48 @@ public class Ongoingfragment extends Fragment {
 		@TargetApi(Build.VERSION_CODES.KITKAT)
 		@Override
 		protected String doInBackground(String... params) {
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://www.point.web44.net/getactivity.php");
-			
-			try {
-				HttpResponse response = client.execute(post);
-				HttpEntity entity = response.getEntity();
-
-			    inputStream = entity.getContent();
-			    // json is UTF-8 by default
-			    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-			    StringBuilder sb = new StringBuilder();
-
-			    String line = null;
-			    while ((line = reader.readLine()) != null)
-			    {
-			        sb.append(line + "\n");
-			    }
-			    result = sb.toString();
-			    
+			try
+			{
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost("http://www.point.web44.net/getactivity.php");
 				
-			} catch (ClientProtocolException e) {
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+				try {
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+	
+				    inputStream = entity.getContent();
+				    // json is UTF-8 by default
+				    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+				    StringBuilder sb = new StringBuilder();
+	
+				    String line = null;
+				    while ((line = reader.readLine()) != null)
+				    {
+				        sb.append(line + "\n");
+				    }
+				    result = sb.toString();
+				    
+					
+				} catch (ClientProtocolException e) {
+					
+					e.printStackTrace();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			catch(Exception e)
+			{
+				alert = new AlertDialog.Builder(getActivity());
+				alert.setTitle("SORRY");
+				alert.setMessage("Either you have no internet connect at the moment or your ISP provider has blocked us, please contact your ISP provider");
+				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//kill activity
+					}
+				}).show();
 			}
 			return null;
 		}

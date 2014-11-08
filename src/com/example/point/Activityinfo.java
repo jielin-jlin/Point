@@ -17,6 +17,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +52,7 @@ public class Activityinfo extends ActionBarActivity {
 	ProgressDialog pDialog;
 	AlertDialog.Builder alert;
 	InputStream inputStream;
-	String result,email;
+	String result,email,reply;
 	ListView listv;
 	ArrayList<ArrayList<String>> arraylist;
 	ArrayList<String> participantarray;
@@ -68,7 +69,7 @@ public class Activityinfo extends ActionBarActivity {
 		timeend=(TextView)findViewById(R.id.textView6);
 		location=(TextView)findViewById(R.id.textView7);
 		zipcode=(TextView)findViewById(R.id.textView4);
-		
+		session = new Usersession(Activityinfo.this);
 		participate=(ImageButton)findViewById(R.id.imageButton1);
 		
 		listv = (ListView)findViewById(R.id.listView1);
@@ -124,40 +125,56 @@ public class Activityinfo extends ActionBarActivity {
 		}
 		@Override
 		protected String doInBackground(String... params) {
-			List<NameValuePair> list=new ArrayList<NameValuePair>();
-			list.add(new BasicNameValuePair("id",Ongoingfragment.activityid.toString().trim()));
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://www.point.web44.net/activityinfo.php");
-			try {
-				post.setEntity(new UrlEncodedFormEntity(list));
-				
-			} catch (UnsupportedEncodingException e) {
-				
-				e.printStackTrace();
+			try
+			{
+				List<NameValuePair> list=new ArrayList<NameValuePair>();
+				list.add(new BasicNameValuePair("id",Ongoingfragment.activityid.toString().trim()));
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost("http://www.point.web44.net/activityinfo.php");
+				try {
+					post.setEntity(new UrlEncodedFormEntity(list));
+					
+				} catch (UnsupportedEncodingException e) {
+					
+					e.printStackTrace();
+				}
+				try {
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+	
+				    inputStream = entity.getContent();
+				    // json is UTF-8 by default
+				    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+				    StringBuilder sb = new StringBuilder();
+	
+				    String line = null;
+				    while ((line = reader.readLine()) != null)
+				    {
+				        sb.append(line + "\n");
+				    }
+				    result = sb.toString();
+				    
+					
+				} catch (ClientProtocolException e) {
+					
+					e.printStackTrace();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
 			}
-			try {
-				HttpResponse response = client.execute(post);
-				HttpEntity entity = response.getEntity();
-
-			    inputStream = entity.getContent();
-			    // json is UTF-8 by default
-			    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-			    StringBuilder sb = new StringBuilder();
-
-			    String line = null;
-			    while ((line = reader.readLine()) != null)
-			    {
-			        sb.append(line + "\n");
-			    }
-			    result = sb.toString();
-			    
-				
-			} catch (ClientProtocolException e) {
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+			catch(Exception e)
+			{
+				alert = new AlertDialog.Builder(Activityinfo.this);
+				alert.setTitle("SORRY");
+				alert.setMessage("Either you have no internet connect at the moment or your ISP provider has blocked us, please contact your ISP provider");
+				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//kill activity
+					}
+				}).show();
 			}
 			return null;
 		}
@@ -234,9 +251,10 @@ public class Activityinfo extends ActionBarActivity {
 			timeend.setText("End:"+arraylist.get(0).get(8).toString().trim());
 			location.setText("Location:"+arraylist.get(0).get(9).toString().trim());
 			zipcode.setText("Zipcode:"+arraylist.get(0).get(10).toString().trim());
-			for(k=1;k<arraylist.get(1).size();k++)
+			for(k=1;k<arraylist.size();k++)
 			{
-				participantarray.add(arraylist.get(1).get(k));
+				if(arraylist.get(k).get(0)!=null)
+				participantarray.add(arraylist.get(k).get(0));
 			}
 			adapter = new participantlistadapter(Activityinfo.this,participantarray);
 			listv.setAdapter(adapter);
@@ -259,8 +277,8 @@ public class Activityinfo extends ActionBarActivity {
 	class participant extends AsyncTask<String,String,String>
 	{
 		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+		protected void onPreExecute()
+		{
 			super.onPreExecute();
 			pDialog = new ProgressDialog(Activityinfo.this);
 			pDialog.setMessage("Loading...");
@@ -268,15 +286,74 @@ public class Activityinfo extends ActionBarActivity {
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
+
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
+			List<NameValuePair> list=new ArrayList<NameValuePair>();
+			list.add(new BasicNameValuePair("email",email));
+			list.add(new BasicNameValuePair("id",Ongoingfragment.activityid));
+			HttpClient client = new DefaultHttpClient();
+			HttpPost post = new HttpPost("http://www.point.web44.net/newparticipant.php");
+			try {
+				post.setEntity(new UrlEncodedFormEntity(list));
+				
+			} catch (UnsupportedEncodingException e) {
+				
+				e.printStackTrace();
+			}
+			try {
+				HttpResponse response = client.execute(post);
+				HttpEntity entity = response.getEntity();
+				reply = EntityUtils.toString(entity).trim();
+				
+			} catch (ClientProtocolException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 			return null;
 		}
-		@Override
-		protected void onPostExecute(String _result) {
+		protected void onPostExecute(String file_url)
+		{
+			if(reply.equals("alreadypart"))
+			{
+				alreadypart();
+			}
+			else
+			{
+				successful();
+			}
 			pDialog.dismiss();
 		}
+		
+	}
+	public void alreadypart()
+	{
+		alert = new AlertDialog.Builder(Activityinfo.this);
+		alert.setTitle("ERROR");
+		alert.setMessage("You are already a participant of this activity");
+		alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//kill activity
+			}
+		}).show();
+	}
+	public void successful()
+	{
+		alert = new AlertDialog.Builder(Activityinfo.this);
+		alert.setTitle("YEAH");
+		alert.setMessage("You are now a participant of this activity");
+		alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//kill activity
+			}
+		}).show();
 	}
 }
 class participantlistadapter extends ArrayAdapter<String>

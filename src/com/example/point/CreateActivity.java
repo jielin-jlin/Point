@@ -166,38 +166,53 @@ public class CreateActivity extends ActionBarActivity {
 		}
 		@Override
 		protected String doInBackground(String... params) {
-			
-			List<NameValuePair> list=new ArrayList<NameValuePair>();
-			list.add(new BasicNameValuePair("title",_title));
-			list.add(new BasicNameValuePair("activity",_activity));
-			list.add(new BasicNameValuePair("date",_date));
-			list.add(new BasicNameValuePair("starttime",_starttime));
-			list.add(new BasicNameValuePair("endtime",_endtime));
-			list.add(new BasicNameValuePair("location",_location));
-			list.add(new BasicNameValuePair("zipcode",_zipcode));
-			list.add(new BasicNameValuePair("first_name",first_name));
-			list.add(new BasicNameValuePair("last_name",last_name));
-			list.add(new BasicNameValuePair("email",email));
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://www.point.web44.net/create_activity.php");
-			try {
-				post.setEntity(new UrlEncodedFormEntity(list));
-				
-			} catch (UnsupportedEncodingException e) {
-				
-				e.printStackTrace();
+			try
+			{
+				List<NameValuePair> list=new ArrayList<NameValuePair>();
+				list.add(new BasicNameValuePair("title",_title));
+				list.add(new BasicNameValuePair("activity",_activity));
+				list.add(new BasicNameValuePair("date",_date));
+				list.add(new BasicNameValuePair("starttime",_starttime));
+				list.add(new BasicNameValuePair("endtime",_endtime));
+				list.add(new BasicNameValuePair("location",_location));
+				list.add(new BasicNameValuePair("zipcode",_zipcode));
+				list.add(new BasicNameValuePair("first_name",first_name));
+				list.add(new BasicNameValuePair("last_name",last_name));
+				list.add(new BasicNameValuePair("email",email));
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost("http://www.point.web44.net/create_activity.php");
+				try {
+					post.setEntity(new UrlEncodedFormEntity(list));
+					
+				} catch (UnsupportedEncodingException e) {
+					
+					e.printStackTrace();
+				}
+				try {
+					HttpResponse response = client.execute(post);
+					HttpEntity entity = response.getEntity();
+					reply = EntityUtils.toString(entity).trim();
+					
+				} catch (ClientProtocolException e) {
+					
+					e.printStackTrace();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
 			}
-			try {
-				HttpResponse response = client.execute(post);
-				HttpEntity entity = response.getEntity();
-				reply = EntityUtils.toString(entity).trim();
-				
-			} catch (ClientProtocolException e) {
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+			catch(Exception e)
+			{
+				alert = new AlertDialog.Builder(CreateActivity.this);
+				alert.setTitle("SORRY");
+				alert.setMessage("Either you have no internet connect at the moment or your ISP provider has blocked us, please contact your ISP provider");
+				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//kill activity
+					}
+				}).show();
 			}
 			return null;
 		}

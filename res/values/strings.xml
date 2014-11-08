@@ -69,5 +69,6 @@
     <string name="profile_picture">Profile Picture</string>
     <string name="date">Date</string>
     <string name="first_name_last_name">first name last name</string>
+    <string name="title_activity_participate">Participate</string>
 
 </resources>
