@@ -64,6 +64,10 @@
             android:name=".Participate"
             android:label="@string/title_activity_participate" >
         </activity>
+        <activity
+            android:name=".Chatpage"
+            android:label="@string/title_activity_chatpage" >
+        </activity>
     </application>
 
 </manifest>

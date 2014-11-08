@@ -1266,32 +1266,35 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_activityinfo=0x7f030018;
-        public static final int activity_create=0x7f030019;
-        public static final int activity_eventinfo=0x7f03001a;
-        public static final int activity_profile=0x7f03001b;
-        public static final int activityinfosinglerow=0x7f03001c;
-        public static final int activitymain=0x7f03001d;
-        public static final int activitysinglerow=0x7f03001e;
-        public static final int fragment_eventsfragment=0x7f03001f;
-        public static final int fragment_infofragment=0x7f030020;
-        public static final int fragment_ongoingfragment=0x7f030021;
-        public static final int fragment_participatingfragment=0x7f030022;
-        public static final int fragment_pastfragment=0x7f030023;
-        public static final int login=0x7f030024;
-        public static final int sign_up=0x7f030025;
-        public static final int support_simple_spinner_dropdown_item=0x7f030026;
+        public static final int activity_chatpage=0x7f030019;
+        public static final int activity_create=0x7f03001a;
+        public static final int activity_eventinfo=0x7f03001b;
+        public static final int activity_profile=0x7f03001c;
+        public static final int activityinfosinglerow=0x7f03001d;
+        public static final int activitymain=0x7f03001e;
+        public static final int activitysinglerow=0x7f03001f;
+        public static final int eventsinglerow=0x7f030020;
+        public static final int fragment_eventsfragment=0x7f030021;
+        public static final int fragment_infofragment=0x7f030022;
+        public static final int fragment_ongoingfragment=0x7f030023;
+        public static final int fragment_participatingfragment=0x7f030024;
+        public static final int fragment_pastfragment=0x7f030025;
+        public static final int login=0x7f030026;
+        public static final int sign_up=0x7f030027;
+        public static final int support_simple_spinner_dropdown_item=0x7f030028;
     }
     public static final class menu {
         public static final int activityinfo=0x7f0c0000;
         public static final int activitymain=0x7f0c0001;
-        public static final int create=0x7f0c0002;
-        public static final int eventinfo=0x7f0c0003;
-        public static final int eventpage=0x7f0c0004;
-        public static final int login=0x7f0c0005;
-        public static final int main=0x7f0c0006;
-        public static final int participate=0x7f0c0007;
-        public static final int profile=0x7f0c0008;
-        public static final int sign_up=0x7f0c0009;
+        public static final int chatpage=0x7f0c0002;
+        public static final int create=0x7f0c0003;
+        public static final int eventinfo=0x7f0c0004;
+        public static final int eventpage=0x7f0c0005;
+        public static final int login=0x7f0c0006;
+        public static final int main=0x7f0c0007;
+        public static final int participate=0x7f0c0008;
+        public static final int profile=0x7f0c0009;
+        public static final int sign_up=0x7f0c000a;
     }
     public static final class string {
         public static final int _of_participants=0x7f0a0047;
@@ -1389,6 +1392,7 @@ containing a value of this type.
         public static final int title=0x7f0a002b;
         public static final int title_activity_activityinfo=0x7f0a0040;
         public static final int title_activity_activitymain=0x7f0a0024;
+        public static final int title_activity_chatpage=0x7f0a0052;
         public static final int title_activity_create=0x7f0a0035;
         public static final int title_activity_eventinfo=0x7f0a0041;
         public static final int title_activity_eventpage=0x7f0a002a;

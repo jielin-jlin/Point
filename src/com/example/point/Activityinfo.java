@@ -244,13 +244,13 @@ public class Activityinfo extends ActionBarActivity {
 					}
 					arraylist.add(array);
 			}
-			title.setText("Title:"+arraylist.get(0).get(4).toString().trim());
+			title.setText("Title: "+arraylist.get(0).get(4).toString().trim());
 			activity.setText("Activity: "+arraylist.get(0).get(5).toString().trim());
-			date.setText("Date:"+arraylist.get(0).get(6).toString().trim());
-			timestart.setText("Begin:"+arraylist.get(0).get(7).toString().trim());
-			timeend.setText("End:"+arraylist.get(0).get(8).toString().trim());
-			location.setText("Location:"+arraylist.get(0).get(9).toString().trim());
-			zipcode.setText("Zipcode:"+arraylist.get(0).get(10).toString().trim());
+			date.setText("Date: "+arraylist.get(0).get(6).toString().trim());
+			timestart.setText("Begin: "+arraylist.get(0).get(7).toString().trim());
+			timeend.setText("End: "+arraylist.get(0).get(8).toString().trim());
+			location.setText("Location: "+arraylist.get(0).get(9).toString().trim());
+			zipcode.setText("Zipcode: "+arraylist.get(0).get(10).toString().trim());
 			for(k=1;k<arraylist.size();k++)
 			{
 				if(arraylist.get(k).get(0)!=null)
