@@ -17,7 +17,7 @@
         android:singleLine="true"
         android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,7 +28,7 @@
         android:singleLine="true"
         android:text="@string/activity"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -48,7 +48,7 @@
         android:singleLine="true"
         android:text="@string/date"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -59,7 +59,7 @@
         android:singleLine="true"
         android:text="@string/time_start"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,7 +70,7 @@
         android:singleLine="true"
         android:text="@string/time_end"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -81,7 +81,7 @@
         android:singleLine="true"
         android:text="@string/location"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -92,6 +92,6 @@
         android:singleLine="true"
         android:text="@string/zipcode"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

@@ -5,21 +5,21 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:background="@drawable/uploadimagepresschange"
-        android:contentDescription="@string/uploadimage"/>
+        android:contentDescription="@string/uploadimage" />
 
     <ImageButton
         android:id="@+id/imageButton1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/signuppresschange"
-		android:contentDescription="@string/signup"/>
+        android:contentDescription="@string/signup" />
 
     <TextView
         android:id="@+id/textView1"
@@ -27,13 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/sign_up" 
-        android:textSize="50sp"/>
+        android:text="@string/sign_up"
+        android:textSize="70sp" />
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="500dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1" >
 
@@ -113,18 +113,20 @@
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/cancelpresschange"
-        android:contentDescription="@string/cancel"/>
+        android:contentDescription="@string/cancel" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="150dp"
-        android:layout_height="140dp"
-        android:layout_above="@+id/imageButton3"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/scrollView1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="39dp"
         android:layout_toRightOf="@+id/imageButton3"
         android:background="@drawable/abc_ab_bottom_solid_light_holo"
         android:contentDescription="@string/todo" />
@@ -134,10 +136,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView1"
-        android:layout_marginBottom="39dp"
-        android:layout_toRightOf="@+id/imageButton2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="56dp"
         android:text="@string/profile_picture"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp" />
+        android:textSize="70sp" />
 
 </RelativeLayout>

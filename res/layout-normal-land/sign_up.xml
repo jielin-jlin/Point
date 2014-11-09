@@ -10,7 +10,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:background="@drawable/uploadimagepresschange"
-        android:contentDescription="@string/uploadimage" />
+        android:contentDescription="@string/uploadimage"/>
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/signuppresschange"
-        android:contentDescription="@string/signupbutton" />
+		android:contentDescription="@string/signup"/>
 
     <TextView
         android:id="@+id/textView1"
@@ -27,14 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/sign_up"
-        android:textSize="35sp" />
+        android:text="@string/sign_up" 
+        android:textSize="50sp"/>
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_above="@+id/imageButton2"
+        android:layout_height="75dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1" >
 
@@ -118,6 +117,27 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/cancelpresschange" android:contentDescription="@string/cancel"/>
+        android:background="@drawable/cancelpresschange"
+        android:contentDescription="@string/cancel"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/scrollView1"
+        android:layout_toRightOf="@+id/imageButton3"
+        android:background="@drawable/abc_ab_bottom_solid_light_holo"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_marginBottom="15dp"
+        android:layout_toRightOf="@+id/imageButton2"
+        android:text="@string/profile_picture"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
 
 </RelativeLayout>

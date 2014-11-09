@@ -17,7 +17,7 @@
         android:singleLine="true"
         android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,16 +28,7 @@
         android:singleLine="true"
         android:text="@string/activity"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
-
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/chatbuttonchange"
-        android:contentDescription="@string/chat"/>
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -48,7 +39,7 @@
         android:singleLine="true"
         android:text="@string/date"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -59,7 +50,7 @@
         android:singleLine="true"
         android:text="@string/time_start"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,7 +61,7 @@
         android:singleLine="true"
         android:text="@string/time_end"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -81,7 +72,7 @@
         android:singleLine="true"
         android:text="@string/location"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -92,6 +83,15 @@
         android:singleLine="true"
         android:text="@string/zipcode"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textSize="7sp" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/chatbuttonchange"
+        android:contentDescription="@string/chat" />
 
 </RelativeLayout>
