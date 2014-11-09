@@ -134,7 +134,7 @@ public class Chatpage extends ActionBarActivity {
 	{
 		input.setText("");
 		if(reply.isEmpty())
-			messages.setText("Say Something");
+			messages.setText("Say Something...");
 		else
 		messages.setText(reply);
 		scrollview.fullScroll(View.FOCUS_DOWN);
