@@ -253,7 +253,7 @@ public class Activityinfo extends ActionBarActivity {
 			zipcode.setText("Zipcode: "+arraylist.get(0).get(10).toString().trim());
 			for(k=1;k<arraylist.size();k++)
 			{
-				if(arraylist.get(k).get(0)!=null)
+				if(!arraylist.get(k).get(0).equals("null"))
 				participantarray.add(arraylist.get(k).get(0));
 			}
 			adapter = new participantlistadapter(Activityinfo.this,participantarray);
