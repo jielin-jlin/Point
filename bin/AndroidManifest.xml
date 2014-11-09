@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.point"
+    package="com.point.meet"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -20,19 +20,19 @@
         android:testOnly="false"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.point.meet.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.point.meet.SignUpActivity"
             android:label="@string/signuptitle" >
         </activity>
         <activity
-            android:name=".Login"
+            android:name="com.point.meet.Login"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".Activitymain"
+            android:name="com.point.meet.Activitymain"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,31 +41,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Event"
+            android:name="com.point.meet.Event"
             android:label="@string/title_activity_eventpage" >
         </activity>
         <activity
-            android:name=".Profile"
+            android:name="com.point.meet.Profile"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name=".CreateActivity"
+            android:name="com.point.meet.CreateActivity"
             android:label="@string/title_activity_create" >
         </activity>
         <activity
-            android:name=".Activityinfo"
+            android:name="com.point.meet.Activityinfo"
             android:label="@string/title_activity_activityinfo" >
         </activity>
         <activity
-            android:name=".Eventinfo"
+            android:name="com.point.meet.Eventinfo"
             android:label="@string/title_activity_eventinfo" >
         </activity>
         <activity
-            android:name=".Participate"
+            android:name="com.point.meet.Participate"
             android:label="@string/title_activity_participate" >
         </activity>
         <activity
-            android:name=".Chatpage"
+            android:name="com.point.meet.Chatpage"
             android:label="@string/title_activity_chatpage" >
         </activity>
     </application>

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.point.Pastfragment" >
+    tools:context="com.point.meet.Pastfragment" >
 
     <!-- TODO: Update blank fragment layout -->
 

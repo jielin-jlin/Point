@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    tools:context="com.example.point.Infofragment" >
+    tools:context="com.point.meet.Infofragment" >
 
     <!-- TODO: Update blank fragment layout -->
 

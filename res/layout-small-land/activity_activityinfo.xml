@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="2"
-    tools:context="com.example.point.Event" >
+    tools:context="com.point.meet.Event" >
     
     <LinearLayout
         android:layout_height="wrap_content"

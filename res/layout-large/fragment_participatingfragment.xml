@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.point.Participatingfragment" >
+    tools:context="com.point.meet.Participatingfragment" >
 
     <!-- TODO: Update blank fragment layout -->
 
