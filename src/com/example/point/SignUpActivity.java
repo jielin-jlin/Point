@@ -1,5 +1,6 @@
 package com.example.point;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -48,6 +49,7 @@ public class SignUpActivity extends ActionBarActivity {
 	HttpGet request;
 	HttpResponse response;
 	String register; 
+	String blob;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +67,30 @@ public class SignUpActivity extends ActionBarActivity {
 		pet_name=(EditText)findViewById(R.id.editText7);
 		school_name=(EditText)findViewById(R.id.editText8);
 		uploadimage.setOnClickListener(new View.OnClickListener(){
-			
+		
 			@Override
 			public void onClick(View v) {
-				if (v == uploadimage){
+				if (v == uploadimage)
+				{
+					 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+					 builder.setTitle("Image");
+					 builder.setMessage("Choose Image From");
+					 builder.setPositiveButton("Camera", new DialogInterface.OnClickListener() {
+					       public void onClick(DialogInterface dialog, int id) {
+					    	   Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+					    	   startActivityForResult(takePicture, 0);
+					       }
+					   });
+					 builder.setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
+					       public void onClick(DialogInterface dialog, int id) {
+					    	   Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+					    	           android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+					    	startActivityForResult(pickPhoto , 1);
+					       }
+					   });
+					 builder.show();
 				}
-				Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-			    photoPickerIntent.setType("image/*");
-			    startActivityForResult(photoPickerIntent, 1);
+				
 			}
 		});
 		cancel.setOnClickListener(new View.OnClickListener() {
@@ -209,21 +227,44 @@ public class SignUpActivity extends ActionBarActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 	    switch (requestCode) {
 	    case 1:
-	     {
 	      if (resultCode == RESULT_OK){
 	      
 	        try {
-	        	  final Uri imageUri = data.getData();
-	        	  final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-				  final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+	        	  Uri imageUri = data.getData();
+	        	  InputStream imageStream = getContentResolver().openInputStream(imageUri);
+				  Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
 					
 	      		  ImageView imageview = (ImageView)findViewById(R.id.imageView1);
 	      		  imageview.setImageBitmap(selectedImage);
-	     }catch(Exception e){
+		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+		      		byte[] bytearray = stream.toByteArray();
+		      		blob=new String(bytearray,"utf8");
+	        	}
+	        catch(Exception e){
 	     		}
-	      	}
 	      
 	      }
+	      break;
+	    case 0:
+	        if(resultCode == RESULT_OK){  
+	        	try {
+		        	  Uri imageUri = data.getData();
+		        	  InputStream imageStream = getContentResolver().openInputStream(imageUri);
+					 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+						
+		      		  ImageView imageview = (ImageView)findViewById(R.id.imageView1);
+		      		  imageview.setImageBitmap(selectedImage);
+		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+		      		byte[] bytearray = stream.toByteArray();
+		      		blob=new String(bytearray);
+
+		        	}
+		        catch(Exception e){
+		     		}
+	        }
+	    break;
 	    }  
 	  }
 	
@@ -324,6 +365,7 @@ public class SignUpActivity extends ActionBarActivity {
 			list.add(new BasicNameValuePair("zipcode",zipcode));
 			list.add(new BasicNameValuePair("petname",petname));
 			list.add(new BasicNameValuePair("schoolname",schoolname));
+			list.add(new BasicNameValuePair("blob",blob));
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost("http://www.point.web44.net/register.php");
 			try {

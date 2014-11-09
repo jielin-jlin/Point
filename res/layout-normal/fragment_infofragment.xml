@@ -22,8 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/quickContactBadge1"
         android:text="@string/first_name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:singleLine="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
@@ -42,8 +41,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/quickContactBadge1"
         android:text="@string/activities_participated_"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:singleLine="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RatingBar
         android:id="@+id/ratingBar1"
