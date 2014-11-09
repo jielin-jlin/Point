@@ -31,6 +31,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -239,7 +240,7 @@ public class SignUpActivity extends ActionBarActivity {
 		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 		      		byte[] bytearray = stream.toByteArray();
-		      		blob=new String(bytearray,"utf8");
+		      		blob=Base64.encodeToString(bytearray, Base64.DEFAULT);
 	        	}
 	        catch(Exception e){
 	     		}
@@ -258,7 +259,7 @@ public class SignUpActivity extends ActionBarActivity {
 		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 		      		byte[] bytearray = stream.toByteArray();
-		      		blob=new String(bytearray);
+		      		blob=Base64.encodeToString(bytearray, Base64.DEFAULT);
 
 		        	}
 		        catch(Exception e){

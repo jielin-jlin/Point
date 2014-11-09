@@ -21,6 +21,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -30,6 +31,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,15 +84,14 @@ public class Infofragment extends Fragment {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
 			pDialog = new ProgressDialog(getActivity());
-			pDialog.setMessage("Signing Up...");
+			pDialog.setMessage("Loading...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
 		@Override
 		protected String doInBackground(String... params) {
-			try
-			{
+			
 				List<NameValuePair> list=new ArrayList<NameValuePair>();
 				list.add(new BasicNameValuePair("email",session.getinfo("email").toString().trim()));
 				HttpClient client = new DefaultHttpClient();
@@ -105,19 +106,7 @@ public class Infofragment extends Fragment {
 				try {
 					HttpResponse response = client.execute(post);
 					HttpEntity entity = response.getEntity();
-	
-				    inputStream = entity.getContent();
-				    // json is UTF-8 by default
-				    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-				    StringBuilder sb = new StringBuilder();
-	
-				    String line = null;
-				    while ((line = reader.readLine()) != null)
-				    {
-				        sb.append(line + "\n");
-				    }
-				    reply = sb.toString();
-				    
+					reply = EntityUtils.toString(entity).trim();
 					
 				} catch (ClientProtocolException e) {
 					
@@ -126,84 +115,25 @@ public class Infofragment extends Fragment {
 					
 					e.printStackTrace();
 				}
-			}
-			catch(Exception e)
-			{
-				alert = new AlertDialog.Builder(getActivity());
-				alert.setTitle("SORRY");
-				alert.setMessage("Either you have no internet connect at the moment or your ISP provider has blocked us, please contact your ISP provider");
-				alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						//kill activity
-					}
-				}).show();
-			}
 			return null;
 		}
 		@Override
 		protected void onPostExecute(String result) {
-			transcriptimage();
+			turnimage();
 			pDialog.dismiss();
 		}
 	}
-	public void transcriptimage()
-	{
-		try {
-			JSONArray jarray = new JSONArray(reply);
-			turnimage(jarray);
-		} catch (JSONException e) {
-
-			alert = new AlertDialog.Builder(getActivity());
-			alert.setTitle("ERROR");
-			alert.setMessage(e.toString());
-			alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					//reset email input
-				}
-			}).show();
-			e.printStackTrace();
-		}
-	}
-	public void turnimage(JSONArray jarray)
+	public void turnimage()
 	{
 		byte[] bytearray = null;
 		String image = null;
-		try {
-			image = jarray.get(0).toString().trim();
-			if(!image.isEmpty())
-			{
-				bytearray=image.getBytes();
-				Bitmap bitmap = BitmapFactory.decodeByteArray(bytearray, 0, bytearray.length);
-				icon.setImageBitmap(bitmap);
-			}
-		} catch (JSONException e) {
-			alert = new AlertDialog.Builder(getActivity());
-			alert.setTitle("ERROR");
-			alert.setMessage(e.toString());
-			alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					//reset email input
-				}
-			}).show();
-			e.printStackTrace();
+		image = reply.toString().trim();
+		if(!image.isEmpty())
+		{
+			bytearray=Base64.decode(image, Base64.DEFAULT);
+			Bitmap bitmap = BitmapFactory.decodeByteArray(bytearray, 0, bytearray.length);
+			icon.setImageBitmap(bitmap);
 		}
-		alert = new AlertDialog.Builder(getActivity());
-		alert.setTitle("ERROR");
-		alert.setMessage(image);
-		alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				//reset email input
-			}
-		}).show();
-		
 	}
 
 }
