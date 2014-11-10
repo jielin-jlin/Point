@@ -20,10 +20,6 @@
         android:testOnly="false"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.point.meet.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
             android:name="com.point.meet.SignUpActivity"
             android:label="@string/signuptitle" >
         </activity>
@@ -59,10 +55,6 @@
         <activity
             android:name="com.point.meet.Eventinfo"
             android:label="@string/title_activity_eventinfo" >
-        </activity>
-        <activity
-            android:name="com.point.meet.Participate"
-            android:label="@string/title_activity_participate" >
         </activity>
         <activity
             android:name="com.point.meet.Chatpage"
