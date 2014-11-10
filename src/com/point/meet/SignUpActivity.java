@@ -241,7 +241,7 @@ public class SignUpActivity extends ActionBarActivity {
 	      		  ImageView imageview = (ImageView)findViewById(R.id.imageView1);
 	      		  imageview.setImageBitmap(selectedImage);
 		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+		      		selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		      		byte[] bytearray = stream.toByteArray();
 		      		blob=Base64.encodeToString(bytearray, Base64.DEFAULT);
 	        	}
@@ -260,7 +260,7 @@ public class SignUpActivity extends ActionBarActivity {
 		      		  ImageView imageview = (ImageView)findViewById(R.id.imageView1);
 		      		  imageview.setImageBitmap(selectedImage);
 		      		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		      		selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+		      		selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		      		byte[] bytearray = stream.toByteArray();
 		      		blob=Base64.encodeToString(bytearray, Base64.DEFAULT);
 
